@@ -1,13 +1,22 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Seguimiento PEULE | Universidad de León</title>
+    <title>Seguimiento del PEULE | Universidad de León</title>
 
     <style>
-        /* ESTILOS GENERALES */
+        :root {
+            --verde: #006633;
+            --verde-oscuro: #004d26;
+            --verde-claro: #eaf3ed;
+            --gris-fondo: #f5f6f5;
+            --gris-texto: #444444;
+            --blanco: #ffffff;
+        }
+
         * {
             box-sizing: border-box;
         }
@@ -15,230 +24,125 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            color: #202b38;
-            background-color: #f5f6f8;
+            background-color: var(--gris-fondo);
+            color: var(--gris-texto);
         }
 
-        /* CABECERA */
         header {
-            background-color: #ffffff;
-            border-bottom: 4px solid #9b172b;
-            padding: 22px 5%;
+            background-color: var(--blanco);
+            border-top: 8px solid var(--verde);
+            padding: 28px 6%;
+            border-bottom: 1px solid #dddddd;
         }
 
         .cabecera {
-            max-width: 1600px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .universidad {
-            font-size: 25px;
+            color: var(--verde);
+            font-size: 28px;
             font-weight: bold;
-            color: #30343b;
+            margin: 0 0 8px;
         }
 
-        .universidad span {
-            display: block;
-            margin-top: 5px;
-            font-size: 13px;
-            font-weight: normal;
+        .subtitulo {
+            margin: 0;
+            font-size: 15px;
             color: #666666;
         }
 
-        .seccion {
-            color: #9b172b;
-            font-size: 14px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        /* CONTENIDO PRINCIPAL */
         main {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 35px 4%;
-        }
-
-        .migas {
-            color: #707782;
-            font-size: 13px;
-            margin-bottom: 22px;
-        }
-
-        .introduccion {
-            margin-bottom: 28px;
+            max-width: 1400px;
+            margin: 35px auto;
+            padding: 0 25px;
         }
 
         h1 {
-            margin: 0 0 15px;
-            font-size: 32px;
-            line-height: 1.25;
-            color: #202b38;
+            color: var(--verde);
+            font-size: 30px;
+            margin-bottom: 10px;
         }
 
-        .introduccion p {
-            max-width: 1000px;
-            margin: 0;
+        .descripcion {
             font-size: 16px;
-            line-height: 1.7;
-            color: #525b66;
+            line-height: 1.6;
+            margin-bottom: 28px;
         }
 
-        .etiqueta {
-            display: inline-block;
-            margin-bottom: 12px;
-            padding: 7px 12px;
-            background-color: #f3e4e7;
-            color: #8e1528;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-        }
-
-        /* MENÚ DE NAVEGACIÓN */
-        .menu {
+        .navegacion {
             display: flex;
             flex-wrap: wrap;
-            gap: 0;
-            margin-bottom: 18px;
-            background-color: #ffffff;
-            border: 1px solid #e0e3e8;
-            border-radius: 6px;
-            overflow: hidden;
+            gap: 12px;
+            margin-bottom: 22px;
         }
 
-        .menu a {
-            flex: 1;
-            min-width: 140px;
-            padding: 16px 20px;
-            text-align: center;
-            text-decoration: none;
-            color: #333e4b;
-            font-size: 14px;
+        .boton {
+            background-color: var(--blanco);
+            color: var(--verde);
+            border: 2px solid var(--verde);
+            padding: 13px 22px;
+            border-radius: 5px;
+            font-size: 15px;
             font-weight: bold;
-            border-right: 1px solid #e0e3e8;
-            transition: background-color 0.2s;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
         }
 
-        .menu a:first-child {
-            background-color: #9b172b;
-            color: #ffffff;
+        .boton:hover {
+            background-color: var(--verde-claro);
         }
 
-        .menu a:hover {
-            background-color: #f3e4e7;
-            color: #8e1528;
+        .boton.activo {
+            background-color: var(--verde);
+            color: var(--blanco);
         }
 
-        .menu a:first-child:hover {
-            background-color: #801225;
-            color: #ffffff;
-        }
-
-        /* CONTENEDOR DEL INFORME */
-        .informe {
-            background-color: #ffffff;
-            border: 1px solid #e0e3e8;
+        .contenedor-informe {
+            background-color: var(--blanco);
+            border: 1px solid #dddddd;
             border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
-        .informe iframe {
+        iframe {
             display: block;
             width: 100%;
             height: 850px;
             border: none;
         }
 
-        .nota {
-            padding: 15px 20px;
-            background-color: #ffffff;
-            border-top: 1px solid #e0e3e8;
-            color: #626b75;
-            font-size: 12px;
-        }
-
-        /* PIE DE PÁGINA */
         footer {
+            text-align: center;
+            padding: 25px;
+            font-size: 13px;
+            color: #666666;
             margin-top: 30px;
-            padding: 25px 5%;
-            background-color: #901328;
-            color: #ffffff;
+            border-top: 1px solid #dddddd;
+            background-color: var(--blanco);
         }
 
-        .pie-contenido {
-            max-width: 1600px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .pie-titulo {
-            font-size: 17px;
-            font-weight: bold;
-        }
-
-        .pie-subtitulo {
-            margin-top: 5px;
-            font-size: 12px;
-            opacity: 0.85;
-        }
-
-        .pie-derecha {
-            font-size: 12px;
-            line-height: 1.8;
-        }
-
-        /* ADAPTACIÓN A MÓVILES */
-        @media (max-width: 768px) {
-            header {
-                padding: 18px 5%;
-            }
-
-            .cabecera {
-                align-items: flex-start;
-                flex-direction: column;
-            }
-
+        @media (max-width: 600px) {
             .universidad {
-                font-size: 21px;
-            }
-
-            main {
-                padding: 25px 3%;
+                font-size: 23px;
             }
 
             h1 {
                 font-size: 25px;
             }
 
-            .introduccion p {
-                font-size: 14px;
-            }
-
-            .menu a {
-                min-width: 50%;
-                flex: 1 1 45%;
-                padding: 13px 8px;
-                font-size: 12px;
-            }
-
-            .informe iframe {
-                height: 700px;
-            }
-
-            .pie-contenido {
+            .navegacion {
                 flex-direction: column;
-                align-items: flex-start;
+            }
+
+            .boton {
+                width: 100%;
+            }
+
+            iframe {
+                height: 650px;
             }
         }
     </style>
@@ -246,98 +150,77 @@
 
 <body>
 
-    <!-- CABECERA INSTITUCIONAL -->
     <header>
         <div class="cabecera">
-
-            <div class="universidad">
-                Universidad de León
-                <span>Transparencia y rendición de cuentas</span>
-            </div>
-
-            <div class="seccion">
-                Planificación estratégica
-            </div>
-
+            <p class="universidad">Universidad de León</p>
+            <p class="subtitulo">Transparencia y rendición de cuentas</p>
         </div>
     </header>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <main>
+        <h1>Seguimiento del Plan Estratégico de la Universidad de León</h1>
 
-        <div class="migas">
-            Inicio &nbsp;›&nbsp; Transparencia &nbsp;›&nbsp;
-            Plan Estratégico &nbsp;›&nbsp; Cuadro de mando
+        <p class="descripcion">
+            Consulta el grado de cumplimiento y desarrollo de las acciones
+            del Plan Estratégico de la Universidad de León (PEULE 2025-2030)
+            a través de los siguientes informes interactivos.
+        </p>
+
+        <div class="navegacion">
+            <button
+                class="boton activo"
+                data-pagina="Seguimiento_PEULE_anual"
+                onclick="cambiarPagina(this)">
+                Seguimiento anual
+            </button>
+
+            <button
+                class="boton"
+                data-pagina="Seguimiento_PEULE_completo"
+                onclick="cambiarPagina(this)">
+                Seguimiento completo
+            </button>
+
+            <button
+                class="boton"
+                data-pagina="Seguimiento_PEULE_grado_desarrollo"
+                onclick="cambiarPagina(this)">
+                Grado de desarrollo
+            </button>
         </div>
 
-        <section class="introduccion">
-
-            <div class="etiqueta">
-                PEULE 2025–2030
-            </div>
-
-            <h1>
-                Cuadro de mando del Plan Estratégico
-                de la Universidad de León
-            </h1>
-
-            <p>
-                Este espacio permite consultar el grado de avance
-                de las acciones e indicadores del Plan Estratégico
-                de la Universidad de León para el periodo 2025–2030.
-                A través del cuadro de mando interactivo es posible
-                explorar los resultados, aplicar filtros y analizar
-                la evolución de las actuaciones.
-            </p>
-
-        </section>
-
-        <!-- NAVEGACIÓN VISUAL -->
-        <nav class="menu">
-            <a href="#informe">Vista general</a>
-            <a href="#informe">Seguimiento de acciones</a>
-            <a href="#informe">Indicadores</a>
-            <a href="#informe">Ejes estratégicos</a>
-        </nav>
-
-        <!-- INFORME DE POWER BI -->
-        <section class="informe" id="informe">
-
+        <div class="contenedor-informe">
             <iframe
-                title="Seguimiento PEULE KPIs"
+                id="powerbi"
+                title="Seguimiento de indicadores del PEULE"
                 src="https://app.powerbi.com/view?r=eyJrIjoiM2M4ZDY3YzUtZWUxMi00ZjkyLWI2MDItNzI3ODdmZjk5NzJhIiwidCI6ImZiNTFlNGNlLTg3ZDEtNGY5OS1hMmYwLTM4OGJiM2M3OWQ1MiIsImMiOjl9"
                 allowfullscreen="true">
             </iframe>
-
-            <div class="nota">
-                Cuadro de mando interactivo · Universidad de León
-            </div>
-
-        </section>
-
+        </div>
     </main>
 
-    <!-- PIE DE PÁGINA -->
     <footer>
-        <div class="pie-contenido">
-
-            <div>
-                <div class="pie-titulo">
-                    Universidad de León
-                </div>
-
-                <div class="pie-subtitulo">
-                    Plan Estratégico 2025–2030
-                </div>
-            </div>
-
-            <div class="pie-derecha">
-                Seguimiento de acciones e indicadores<br>
-                Transparencia y planificación estratégica
-            </div>
-
-        </div>
+        Universidad de León · Plan Estratégico 2025-2030
     </footer>
+
+    <script>
+        const enlaceBase =
+            "https://app.powerbi.com/view?r=eyJrIjoiM2M4ZDY3YzUtZWUxMi00ZjkyLWI2MDItNzI3ODdmZjk5NzJhIiwidCI6ImZiNTFlNGNlLTg3ZDEtNGY5OS1hMmYwLTM4OGJiM2M3OWQ1MiIsImMiOjl9";
+
+        function cambiarPagina(boton) {
+            const pagina = boton.dataset.pagina;
+
+            document.querySelectorAll(".boton").forEach(function (elemento) {
+                elemento.classList.remove("activo");
+            });
+
+            boton.classList.add("activo");
+
+            document.getElementById("powerbi").src =
+                enlaceBase + "&pageName=" + encodeURIComponent(pagina);
+        }
+    </script>
 
 </body>
 </html>
+```
