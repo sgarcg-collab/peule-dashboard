@@ -173,22 +173,19 @@
 
             <button
                 class="boton activo"
-                data-pagina="Seguimiento_PEULE_anual"
-                onclick="cambiarPagina(this)">
+                onclick="cambiarPagina(0)">
                 Seguimiento anual
             </button>
 
             <button
                 class="boton"
-                data-pagina="Seguimiento_PEULE_completo"
-                onclick="cambiarPagina(this)">
+                onclick="cambiarPagina(1)">
                 Seguimiento completo
             </button>
 
             <button
                 class="boton"
-                data-pagina="Seguimiento_PEULE_grado_desarrollo"
-                onclick="cambiarPagina(this)">
+                onclick="cambiarPagina(2)">
                 Grado de desarrollo
             </button>
 
@@ -199,7 +196,7 @@
             <iframe
                 id="powerbi"
                 title="Seguimiento estratégico del PEULE"
-                src=""
+                src="https://app.powerbi.com/view?r=eyJrIjoiNmU0YjZkZTQtMTgxYS00NjA2LWIyNDctN2VjMTYwNTBhYzU5IiwidCI6ImZiNTFlNGNlLTg3ZDEtNGY5OS1hMmYwLTM4OGJiM2M3OWQ1MiIsImMiOjl9&pageName=6889da09eb8e086c2190"
                 allowfullscreen="true">
             </iframe>
 
@@ -213,41 +210,40 @@
 
     <script>
 
-        // Dirección principal del informe de Power BI
-        const enlaceBase =
-            "https://app.powerbi.com/view?r=eyJrIjoiNmU0YjZkZTQtMTgxYS00NjA2LWIyNDctN2VjMTYwNTBhYzU5IiwidCI6ImZiNTFlNGNlLTg3ZDEtNGY5OS1hMmYwLTM4OGJiM2M3OWQ1MiIsImMiOjl9";
+        // Enlaces independientes de cada página de Power BI
+        const paginasPowerBI = [
 
-        // Identificadores de las tres páginas del informe
-        const paginas = {
-            anual: "Seguimiento_PEULE_anual",
-            completo: "Seguimiento_PEULE_completo",
-            desarrollo: "Seguimiento_PEULE_grado_desarrollo"
-        };
+            // Primera página: Seguimiento anual
+            "https://app.powerbi.com/view?r=eyJrIjoiNmU0YjZkZTQtMTgxYS00NjA2LWIyNDctN2VjMTYwNTBhYzU5IiwidCI6ImZiNTFlNGNlLTg3ZDEtNGY5OS1hMmYwLTM4OGJiM2M3OWQ1MiIsImMiOjl9&pageName=6889da09eb8e086c2190",
 
-        // Cargar una página concreta de Power BI
-        function cambiarPagina(boton) {
+            // Segunda página: Seguimiento completo
+            "https://app.powerbi.com/view?r=eyJrIjoiNmU0YjZkZTQtMTgxYS00NjA2LWIyNDctN2VjMTYwNTBhYzU5IiwidCI6ImZiNTFlNGNlLTg3ZDEtNGY5OS1hMmYwLTM4OGJiM2M3OWQ1MiIsImMiOjl9&pageName=93f9f1cac5c97bdadb40",
 
-            const pagina = boton.dataset.pagina;
+            // Tercera página: Grado de desarrollo
+            "https://app.powerbi.com/view?r=eyJrIjoiNmU0YjZkZTQtMTgxYS00NjA2LWIyNDctN2VjMTYwNTBhYzU5IiwidCI6ImZiNTFlNGNlLTg3ZDEtNGY5OS1hMmYwLTM4OGJiM2M3OWQ1MiIsImMiOjl9&pageName=fceab8e2096c8f6b3eaa"
 
-            // Actualizar botón activo
-            document.querySelectorAll(".boton").forEach(function(elemento) {
-                elemento.classList.remove("activo");
+        ];
+
+        function cambiarPagina(indice) {
+
+            // Actualizar el botón seleccionado
+            const botones = document.querySelectorAll(".boton");
+
+            botones.forEach(function(boton) {
+                boton.classList.remove("activo");
             });
 
-            boton.classList.add("activo");
+            botones[indice].classList.add("activo");
 
-            // Cambiar la página del informe
+            // Cargar exclusivamente la página seleccionada
             document.getElementById("powerbi").src =
-                enlaceBase + "&pageName=" + encodeURIComponent(pagina);
-        }
+                paginasPowerBI[indice];
 
-        // Cargar inicialmente la primera página:
-        // Seguimiento anual
-        document.getElementById("powerbi").src =
-            enlaceBase + "&pageName=" + encodeURIComponent(paginas.anual);
+        }
 
     </script>
 
 </body>
 </html>
+
 
