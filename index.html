@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Seguimiento del PEULE | Universidad de León</title>
+    <title>Seguimiento estratégico del PEULE | Universidad de León</title>
 
     <style>
         :root {
@@ -152,11 +153,14 @@
     <header>
         <div class="cabecera">
             <p class="universidad">Universidad de León</p>
-            <p class="subtitulo">Transparencia y rendición de cuentas</p>
+            <p class="subtitulo">
+                Seguimiento estratégico y evaluación institucional
+            </p>
         </div>
     </header>
 
     <main>
+
         <h1>Seguimiento del Plan Estratégico de la Universidad de León</h1>
 
         <p class="descripcion">
@@ -166,6 +170,7 @@
         </p>
 
         <div class="navegacion">
+
             <button
                 class="boton activo"
                 data-pagina="Seguimiento_PEULE_anual"
@@ -186,16 +191,20 @@
                 onclick="cambiarPagina(this)">
                 Grado de desarrollo
             </button>
+
         </div>
 
         <div class="contenedor-informe">
+
             <iframe
                 id="powerbi"
-                title="Seguimiento de indicadores del PEULE"
-                src="https://app.powerbi.com/view?r=eyJrIjoiNmU0YjZkZTQtMTgxYS00NjA2LWIyNDctN2VjMTYwNTBhYzU5IiwidCI6ImZiNTFlNGNlLTg3ZDEtNGY5OS1hMmYwLTM4OGJiM2M3OWQ1MiIsImMiOjl9"
+                title="Seguimiento estratégico del PEULE"
+                src=""
                 allowfullscreen="true">
             </iframe>
+
         </div>
+
     </main>
 
     <footer>
@@ -203,23 +212,42 @@
     </footer>
 
     <script>
+
+        // Dirección principal del informe de Power BI
         const enlaceBase =
             "https://app.powerbi.com/view?r=eyJrIjoiNmU0YjZkZTQtMTgxYS00NjA2LWIyNDctN2VjMTYwNTBhYzU5IiwidCI6ImZiNTFlNGNlLTg3ZDEtNGY5OS1hMmYwLTM4OGJiM2M3OWQ1MiIsImMiOjl9";
 
+        // Identificadores de las tres páginas del informe
+        const paginas = {
+            anual: "Seguimiento_PEULE_anual",
+            completo: "Seguimiento_PEULE_completo",
+            desarrollo: "Seguimiento_PEULE_grado_desarrollo"
+        };
+
+        // Cargar una página concreta de Power BI
         function cambiarPagina(boton) {
+
             const pagina = boton.dataset.pagina;
 
-            document.querySelectorAll(".boton").forEach(function (elemento) {
+            // Actualizar botón activo
+            document.querySelectorAll(".boton").forEach(function(elemento) {
                 elemento.classList.remove("activo");
             });
 
             boton.classList.add("activo");
 
+            // Cambiar la página del informe
             document.getElementById("powerbi").src =
                 enlaceBase + "&pageName=" + encodeURIComponent(pagina);
         }
+
+        // Cargar inicialmente la primera página:
+        // Seguimiento anual
+        document.getElementById("powerbi").src =
+            enlaceBase + "&pageName=" + encodeURIComponent(paginas.anual);
+
     </script>
 
 </body>
 </html>
-```
+
