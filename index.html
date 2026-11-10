@@ -28,6 +28,8 @@
             color: var(--gris-texto);
         }
 
+        /* CABECERA */
+
         header {
             background-color: var(--blanco);
             border-top: 8px solid var(--verde);
@@ -53,6 +55,8 @@
             color: #666666;
         }
 
+        /* CONTENIDO PRINCIPAL */
+
         main {
             max-width: 1400px;
             margin: 35px auto;
@@ -70,6 +74,8 @@
             line-height: 1.6;
             margin-bottom: 28px;
         }
+
+        /* NAVEGACIÓN */
 
         .navegacion {
             display: flex;
@@ -99,6 +105,8 @@
             color: var(--blanco);
         }
 
+        /* INFORME POWER BI */
+
         .contenedor-informe {
             background-color: var(--blanco);
             border: 1px solid #dddddd;
@@ -114,6 +122,39 @@
             border: none;
         }
 
+        /* DESCRIPCIONES DE LOS CUADROS DE MANDO */
+
+        .descripcion-cuadros {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 25px;
+            margin-bottom: 35px;
+        }
+
+        .cuadro-descripcion {
+            background-color: var(--blanco);
+            border-left: 4px solid var(--verde);
+            padding: 18px;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .cuadro-descripcion h3 {
+            color: var(--verde);
+            font-size: 17px;
+            margin: 0 0 10px;
+        }
+
+        .cuadro-descripcion p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+            color: var(--gris-texto);
+        }
+
+        /* PIE DE PÁGINA */
+
         footer {
             text-align: center;
             padding: 25px;
@@ -122,6 +163,14 @@
             margin-top: 30px;
             border-top: 1px solid #dddddd;
             background-color: var(--blanco);
+        }
+
+        /* ADAPTACIÓN A MÓVILES */
+
+        @media (max-width: 800px) {
+            .descripcion-cuadros {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 600px) {
@@ -145,10 +194,13 @@
                 height: 650px;
             }
         }
+
     </style>
 </head>
 
 <body>
+
+    <!-- CABECERA -->
 
     <header>
         <div class="cabecera">
@@ -159,6 +211,8 @@
         </div>
     </header>
 
+    <!-- CONTENIDO PRINCIPAL -->
+
     <main>
 
         <h1>Seguimiento del Plan Estratégico de la Universidad de León</h1>
@@ -168,6 +222,8 @@
             del Plan Estratégico de la Universidad de León (PEULE 2025-2030)
             a través de los siguientes informes interactivos.
         </p>
+
+        <!-- BOTONES DE NAVEGACIÓN -->
 
         <div class="navegacion">
 
@@ -191,6 +247,8 @@
 
         </div>
 
+        <!-- INFORME POWER BI -->
+
         <div class="contenedor-informe">
 
             <iframe
@@ -202,15 +260,53 @@
 
         </div>
 
+        <!-- DESCRIPCIÓN DE LOS CUADROS DE MANDO -->
+
+        <div class="descripcion-cuadros">
+
+            <div class="cuadro-descripcion">
+                <h3>Seguimiento anual</h3>
+                <p>
+                    Evalúa el grado de cumplimiento de los indicadores respecto
+                    a los objetivos establecidos para cada ejercicio.
+                    Permite identificar avances y desviaciones en el desarrollo anual del PEULE.
+                </p>
+            </div>
+
+            <div class="cuadro-descripcion">
+                <h3>Seguimiento completo</h3>
+                <p>
+                    Analiza el grado de cumplimiento de los indicadores en relación
+                    con los objetivos globales establecidos para el horizonte 2025-2030.
+                    Permite valorar el avance del Plan Estratégico a medio y largo plazo.
+                </p>
+            </div>
+
+            <div class="cuadro-descripcion">
+                <h3>Grado de desarrollo</h3>
+                <p>
+                    Muestra el estado de ejecución de las acciones del PEULE,
+                    clasificándolas según su grado de desarrollo.
+                    Permite identificar las acciones no iniciadas, en desarrollo, avanzadas o finalizadas.
+                </p>
+            </div>
+
+        </div>
+
     </main>
+
+    <!-- PIE DE PÁGINA -->
 
     <footer>
         Universidad de León · Plan Estratégico 2025-2030
     </footer>
 
+    <!-- FUNCIONALIDAD DE NAVEGACIÓN -->
+
     <script>
 
         // Enlaces independientes de cada página de Power BI
+
         const paginasPowerBI = [
 
             // Primera página: Seguimiento anual
@@ -227,6 +323,7 @@
         function cambiarPagina(indice) {
 
             // Actualizar el botón seleccionado
+
             const botones = document.querySelectorAll(".boton");
 
             botones.forEach(function(boton) {
@@ -236,6 +333,7 @@
             botones[indice].classList.add("activo");
 
             // Cargar exclusivamente la página seleccionada
+
             document.getElementById("powerbi").src =
                 paginasPowerBI[indice];
 
